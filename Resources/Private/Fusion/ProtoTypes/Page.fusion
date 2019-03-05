@@ -1,0 +1,13 @@
+prototype(NeosRulez.JsMinifier:JsFile) < prototype(Neos.Neos:Plugin)
+prototype(NeosRulez.JsMinifier:JsFile) {
+    package = 'NeosRulez.JsMinifier'
+    controller = 'JsMinifier'
+    action = 'includeFile'
+    @cache {
+        mode = 'uncached'
+        context {
+            1 = 'node'
+            2 = 'documentNode'
+        }
+    }
+}

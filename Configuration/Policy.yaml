@@ -1,0 +1,11 @@
+privilegeTargets:
+  Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    'NeosRulez.JsMinifier:JsMinifierControllerActions':
+      matcher: 'method(NeosRulez\JsMinifier\Controller\JsMinifierController->.*Action())'
+
+roles:
+  'Neos.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'NeosRulez.JsMinifier:JsMinifierControllerActions'
+        permission: GRANT

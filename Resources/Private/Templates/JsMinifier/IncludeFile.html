@@ -1,0 +1,1 @@
+{namespace neos=Neos\Neos\ViewHelpers}{namespace fusion=Neos\Fusion\ViewHelpers}<f:if condition="{js}"><f:then><script>{js}</script></f:then><f:else><script type="text/javascript" src="{f:uri.resource(path: filepath, package: package)}"></script></f:else></f:if>
