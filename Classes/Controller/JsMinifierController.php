@@ -25,8 +25,8 @@ class JsMinifierController extends ActionController
     public function includeFileAction() {
         $jsFile = $this->request->getInternalArgument('__source');
         $inline = $this->request->getInternalArgument('__inline');
-        $js = $this->jsMinifierRepository->minifieJs($jsFile);
         if($inline == TRUE) {
+            $js = $this->jsMinifierRepository->minifieJs($jsFile);
             $this->view->assign('js',$js);
         } else {
             $outputFolder = $this->request->getInternalArgument('__outputFolder');
@@ -39,9 +39,11 @@ class JsMinifierController extends ActionController
             if (file_exists($file)) {
                 $targetFileTs = filemtime($file);
                 if ($sourceFileTs > $targetFileTs) {
+                    $js = $this->jsMinifierRepository->minifieJs($jsFile);
                     file_put_contents($file, $js);
                 }
             } else {
+                $js = $this->jsMinifierRepository->minifieJs($jsFile);
                 file_put_contents($file, $js);
             }
             $path = explode("/", $file);
