@@ -21,6 +21,7 @@ class JsMinifierController extends ActionController
 
     /**
      * @return void
+     * @Flow\SkipCsrfProtection
      */
     public function includeFileAction() {
         $jsFile = $this->request->getInternalArgument('__source');
