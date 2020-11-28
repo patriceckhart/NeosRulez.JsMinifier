@@ -15,9 +15,9 @@ class JsMinifierController extends ActionController
 
     /**
      * @Flow\Inject
-     * @var \NeosRulez\JsMinifier\Domain\Repository\JsMinifierRepository
+     * @var \NeosRulez\JsMinifier\Domain\Factory\JsMinifierFactory
      */
-    protected $jsMinifierRepository;
+    protected $jsMinifierFactory;
 
     /**
      * @return void
@@ -27,7 +27,7 @@ class JsMinifierController extends ActionController
         $jsFile = $this->request->getInternalArgument('__source');
         $inline = $this->request->getInternalArgument('__inline');
         if($inline == TRUE) {
-            $js = $this->jsMinifierRepository->minifieJs($jsFile);
+            $js = $this->jsMinifierFactory->minifieJs($jsFile);
             $this->view->assign('js',$js);
         } else {
             $outputFolder = $this->request->getInternalArgument('__outputFolder');
@@ -40,11 +40,11 @@ class JsMinifierController extends ActionController
             if (file_exists($file)) {
                 $targetFileTs = filemtime($file);
                 if ($sourceFileTs > $targetFileTs) {
-                    $js = $this->jsMinifierRepository->minifieJs($jsFile);
+                    $js = $this->jsMinifierFactory->minifieJs($jsFile);
                     file_put_contents($file, $js);
                 }
             } else {
-                $js = $this->jsMinifierRepository->minifieJs($jsFile);
+                $js = $this->jsMinifierFactory->minifieJs($jsFile);
                 file_put_contents($file, $js);
             }
             $path = explode("/", $file);

@@ -1,18 +1,17 @@
 <?php
-namespace NeosRulez\JsMinifier\Domain\Repository;
+namespace NeosRulez\JsMinifier\Domain\Factory;
 
 /*
  * This file is part of the NeosRulez.JsMinifier package.
  */
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Persistence\Repository;
 use MatthiasMullie\Minify;
 
 /**
  * @Flow\Scope("singleton")
  */
-class JsMinifierRepository extends Repository
+class JsMinifierFactory
 {
 
     public function minifieJs($jsFile) {
